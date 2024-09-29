@@ -1,7 +1,7 @@
 use app::common;
 use app::config::Files;
-use openssl::ssl::{SslAcceptor, SslFiletype, SslMethod, SslStream};
-use std::net::{TcpListener, TcpStream};
+use openssl::ssl::{SslAcceptor, SslFiletype, SslMethod};
+use std::net::TcpListener;
 use std::sync::Arc;
 use std::thread;
 
@@ -25,8 +25,8 @@ fn main() {
             Ok(stream) => {
                 let acceptor = acceptor.clone();
                 thread::spawn(move || {
-                    let stream = acceptor.accept(stream).unwrap();
-                    handle_client(stream);
+                    let mut stream = acceptor.accept(stream).unwrap();
+                    common::handle_client_server_communication(&mut stream);
                 });
             }
             Err(e) => {
@@ -34,8 +34,4 @@ fn main() {
             }
         }
     }
-}
-
-fn handle_client(mut stream: SslStream<TcpStream>) {
-    common::handle_client_server_communication(&mut stream);
 }
