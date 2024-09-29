@@ -1,4 +1,4 @@
-use app::common;
+use app::common::{self, HOST};
 use app::config::Files;
 use openssl::ssl::{SslAcceptor, SslFiletype, SslMethod};
 use std::net::TcpListener;
@@ -14,7 +14,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     acceptor.check_private_key()?;
     let acceptor = Arc::new(acceptor.build());
 
-    let listener = TcpListener::bind("localhost:8443")?;
+    let listener = TcpListener::bind(HOST)?;
 
     for stream in listener.incoming() {
         match stream {
