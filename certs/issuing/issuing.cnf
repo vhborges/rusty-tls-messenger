@@ -2,16 +2,16 @@
 default_ca = CA_default
 
 [ CA_default ]
-dir               = /home/vinicius/Code/OpenSSLtraining/myCA/myIssuing
+dir               = /home/vinicius/Code/OpenSSLtraining/certs/issuing
 certs             = $dir/cert
 crl_dir           = $dir/crl
 new_certs_dir     = $dir/issued_certs
 database          = $dir/data/index.dat
 serial            = $dir/data/serial.dat
-private_key       = $dir/private/myIssuing.key
-certificate       = $dir/cert/myIssuing.cer
+private_key       = $dir/private/issuing.key
+certificate       = $dir/cert/issuing.cer
 crlnumber         = $dir/data/crl_number
-crl               = $dir/crl/myIssuing.crl
+crl               = $dir/crl/issuing.crl
 crl_extensions    = crl_ext
 default_crl_days  = 30
 default_md        = sha256
@@ -60,8 +60,8 @@ subjectKeyIdentifier = hash
 authorityKeyIdentifier = keyid,issuer
 keyUsage = critical, nonRepudiation, digitalSignature, keyEncipherment
 extendedKeyUsage = clientAuth, emailProtection
-crlDistributionPoints = URI:http://myCA/myIssuing.crl
-authorityInfoAccess = caIssuers;URI:http://myCA/myIssuing.cer
+crlDistributionPoints = URI:http://certs/issuing.crl
+authorityInfoAccess = caIssuers;URI:http://certs/issuing.cer
 
 [ server_cert ]
 basicConstraints = CA:FALSE
@@ -69,8 +69,8 @@ subjectKeyIdentifier = hash
 authorityKeyIdentifier = keyid,issuer:always
 keyUsage = critical, digitalSignature, keyEncipherment
 extendedKeyUsage = serverAuth
-crlDistributionPoints = URI:http://myCA/myIssuing.crl
-authorityInfoAccess = caIssuers;URI:http://myCA/myIssuing.cer
+crlDistributionPoints = URI:http://certs/issuing.crl
+authorityInfoAccess = caIssuers;URI:http://certs/issuing.cer
 
 [ codeSigning_cert ]
 basicConstraints = CA:FALSE
@@ -78,8 +78,8 @@ subjectKeyIdentifier = hash
 authorityKeyIdentifier = keyid,issuer:always
 keyUsage = critical, digitalSignature, keyEncipherment
 extendedKeyUsage = codeSigning
-crlDistributionPoints = URI:http://myCA/myIssuing.crl
-authorityInfoAccess = caIssuers;URI:http://myCA/myIssuing.cer
+crlDistributionPoints = URI:http://certs/issuing.crl
+authorityInfoAccess = caIssuers;URI:http://certs/issuing.cer
 
 [ crl_ext ]
 authorityKeyIdentifier=keyid:always

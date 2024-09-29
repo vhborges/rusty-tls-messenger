@@ -2,16 +2,16 @@
 default_ca = CA_default
 
 [ CA_default ]
-dir               = /home/vinicius/Code/OpenSSL training/myCA/myRoot
+dir               = /home/vinicius/Code/OpenSSLtraining/certs/root
 certs             = $dir/cert
 crl_dir           = $dir/crl
 new_certs_dir     = $dir/issued_certs
 database          = $dir/data/index.dat
 serial            = $dir/data/serial.dat
-private_key       = $dir/private/myRoot.key
-certificate       = $dir/cert/myRoot.cer
+private_key       = $dir/private/root.key
+certificate       = $dir/cert/root.cer
 crlnumber         = $dir/data/crl_number
-crl               = $dir/crl/myRoot.crl
+crl               = $dir/crl/root.crl
 crl_extensions    = crl_ext
 default_crl_days  = 30
 default_md        = sha256
@@ -58,12 +58,12 @@ subjectKeyIdentifier = hash
 authorityKeyIdentifier = keyid:always,issuer
 keyUsage = critical, digitalSignature, cRLSign, keyCertSign
 basicConstraints = critical, CA:true, pathlen:2
-crlDistributionPoints = URI:http://myCA/myRoot.crl
+crlDistributionPoints = URI:http://certs/root.crl
 
 [ v3_intermediate_ca ]
 subjectKeyIdentifier = hash
 authorityKeyIdentifier = keyid:always,issuer
 basicConstraints = critical, CA:true, pathlen:0
 keyUsage = critical, digitalSignature, cRLSign, keyCertSign
-crlDistributionPoints = URI:http://myCA/myIssuing.crl
-authorityInfoAccess = caIssuers;URI:http://myCA/myRoot.cer
+crlDistributionPoints = URI:http://certs/issuing.crl
+authorityInfoAccess = caIssuers;URI:http://certs/root.cer
