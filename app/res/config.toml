@@ -1,0 +1,19 @@
+[root]
+cert = "../myCA/myRoot/cert/myRoot.cer"
+key = "../myCA/myRoot/private/myRoot.key"
+chain = ""
+
+[issuing]
+cert = "../myCA/myIssuing/cert/myIssuing.cer"
+key = "../myCA/myIssuing/private/myIssuing.key"
+chain = "../myCA/myIssuing/cert/cacerts.cer"
+
+[server]
+cert = "../myCA/myServer/myServer.cer"
+key = "../myCA/myServer/myServer.key"
+chain = "../myCA/myServer/cacerts.cer"
+
+[client]
+cert = "../myCA/myClient/myClient.cer"
+key = "../myCA/myClient/myClient.key"
+chain = "../myCA/myClient/cacerts.cer"

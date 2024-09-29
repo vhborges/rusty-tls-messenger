@@ -1,0 +1,5 @@
+R	250918231701Z	240926221718Z	884F3CBE5ED59D9F	unknown	/C=BR/ST=SP/L=SP/O=Borges LTDAb/OU=PKI/CN=localhost/emailAddress=pki@home.lab
+R	250918232557Z	240926221637Z	884F3CBE5ED59DA0	unknown	/C=BR/ST=SC/L=Florian\xC3\x83\xC2\xB3polis/O=myClient/OU=PKI/CN=localhost/emailAddress=pki@home.lab
+R	250926223340Z	240926223505Z	884F3CBE5ED59DA3	unknown	/C=BR/ST=SP/L=SP/O=Borges LTDAb/OU=PKI/CN=localhost/emailAddress=pki@home.lab
+R	250926223742Z	240926224113Z	884F3CBE5ED59DA4	unknown	/C=BR/ST=SP/L=Serverland/O=Borges LTDAb/OU=PKI/CN=localhost/emailAddress=pki@home.lab
+V	250926224809Z		884F3CBE5ED59DA5	unknown	/C=BR/ST=SC/L=Florian\xC3\x83\xC2\xB3polis/O=myClient/OU=PKI/CN=localhost/emailAddress=pki@home.lab
