@@ -5,33 +5,33 @@ use std::net::TcpListener;
 use std::sync::Arc;
 use std::thread;
 
-fn main() {
+fn main() -> Result<(), Box<dyn std::error::Error>> {
     let files = Files::new();
 
-    let mut acceptor = SslAcceptor::mozilla_intermediate(SslMethod::tls()).unwrap();
-    acceptor
-        .set_private_key_file(files.server.key, SslFiletype::PEM)
-        .unwrap();
-    acceptor
-        .set_certificate_chain_file(files.server.chain)
-        .unwrap();
-    acceptor.check_private_key().unwrap();
+    let mut acceptor = SslAcceptor::mozilla_intermediate(SslMethod::tls())?;
+    acceptor.set_private_key_file(files.server.key, SslFiletype::PEM)?;
+    acceptor.set_certificate_chain_file(files.server.chain)?;
+    acceptor.check_private_key()?;
     let acceptor = Arc::new(acceptor.build());
 
-    let listener = TcpListener::bind("localhost:8443").unwrap();
+    let listener = TcpListener::bind("localhost:8443")?;
 
     for stream in listener.incoming() {
         match stream {
             Ok(stream) => {
                 let acceptor = acceptor.clone();
                 thread::spawn(move || {
-                    let mut stream = acceptor.accept(stream).unwrap();
-                    common::handle_client_server_communication(&mut stream);
+                    let mut stream = acceptor.accept(stream)
+                        .expect("Error accepting connection");
+                    common::handle_client_server_communication(&mut stream)
+                        .expect("Error handling client communication");
                 });
             }
             Err(e) => {
-                println!("{}", e)
+                panic!("{}", e);
             }
         }
     }
+
+    Ok(())
 }
