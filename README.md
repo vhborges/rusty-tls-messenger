@@ -1,6 +1,8 @@
 # Summary
 A sample client-server application for TLS authentication and secure messaging, built with OpenSSL and Rust.
 
+This project was made with the purpose of learning OpenSSL, TLS handshake and secure communication, but it can be used as a base code for any app that requires TLS communication.
+
 # Project structure
 - certs: Contains certificates and RSA keys used by the app to provide TLS authentication and message encryption, generated using OpenSSL CLI.
 - app: Contains the app's source-code.
